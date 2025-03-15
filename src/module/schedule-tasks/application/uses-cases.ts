@@ -1,5 +1,5 @@
 import { Schedule, TaskSchedulerRepository, TaskSchedulerUseCase } from "../domain/interfaces";
-import { getAwsEventBridgeScheduler } from "../infraestructure.ts/aws-event-bridge-scheduler";
+import { FactoryAwsEventBridgeScheduler } from "../infraestructure.ts/aws-event-bridge-scheduler";
 
 class ScheduleTasksUseCases implements TaskSchedulerUseCase {
   constructor(private readonly taskSchedulerRepository: TaskSchedulerRepository) {}
@@ -17,7 +17,7 @@ class ScheduleTasksUseCases implements TaskSchedulerUseCase {
   }
 }
 
-export function getScheduleTasksUseCases(): TaskSchedulerUseCase {
-  const taskSchedulerRepository = getAwsEventBridgeScheduler();
+export function FactoryScheduleTasksUseCases(): TaskSchedulerUseCase {
+  const taskSchedulerRepository = FactoryAwsEventBridgeScheduler();
   return new ScheduleTasksUseCases(taskSchedulerRepository);
 }

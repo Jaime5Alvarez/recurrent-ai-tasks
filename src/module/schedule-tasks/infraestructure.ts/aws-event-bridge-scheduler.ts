@@ -102,6 +102,6 @@ class AwsEventBridgeScheduler implements TaskSchedulerRepository {
   }
 }
 
-export function getAwsEventBridgeScheduler(): TaskSchedulerRepository {
+export function FactoryAwsEventBridgeScheduler(): TaskSchedulerRepository {
   return new AwsEventBridgeScheduler();
 }
